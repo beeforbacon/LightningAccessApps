@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitcoin Lightning Network Applications and Services</title>
+  <meta name="description" content="Recommended Bitcoin Lightning Network wallets, neobanks, and exchanges — self custody, banking, and trading.">
+  <meta property="og:title" content="Bitcoin Lightning Network Applications & Services">
+  <meta property="og:description" content="The best ways to send and receive Bitcoin over the Lightning Network — self custody wallets, neobanks, and exchanges.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://beeforbacon.github.io/LightningAccessApps/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bitcoin Lightning Network Applications & Services">
+  <meta name="twitter:description" content="The best ways to send and receive Bitcoin over the Lightning Network — self custody wallets, neobanks, and exchanges.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -26,6 +35,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', system-ui, sans-serif;
@@ -295,6 +305,43 @@
 
     .footer-note {
       margin-top: 1.5rem;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header {
+      animation: fadeUp 0.6s ease-out both;
+    }
+
+    .section:nth-child(1) { animation: fadeUp 0.6s ease-out 0.15s both; }
+    .section:nth-child(2) { animation: fadeUp 0.6s ease-out 0.3s both; }
+    .section:nth-child(3) { animation: fadeUp 0.6s ease-out 0.45s both; }
+
+    .card {
+      animation: fadeUp 0.5s ease-out both;
+    }
+
+    .section:nth-child(1) .card:nth-child(1) { animation-delay: 0.25s; }
+    .section:nth-child(1) .card:nth-child(2) { animation-delay: 0.35s; }
+    .section:nth-child(1) .card:nth-child(3) { animation-delay: 0.45s; }
+    .section:nth-child(2) .card:nth-child(1) { animation-delay: 0.4s; }
+    .section:nth-child(2) .card:nth-child(2) { animation-delay: 0.5s; }
+    .section:nth-child(3) .card:nth-child(1) { animation-delay: 0.55s; }
+    .section:nth-child(3) .card:nth-child(2) { animation-delay: 0.65s; }
+    .section:nth-child(3) .card:nth-child(3) { animation-delay: 0.75s; }
+
+    footer {
+      animation: fadeUp 0.6s ease-out 0.85s both;
     }
 
     /* ── Donate ── */
