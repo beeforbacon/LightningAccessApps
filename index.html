@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Lightning Network Wallets — Recommendations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --surface: #16161a;
+      --surface-hover: #1c1c22;
+      --border: #2a2a30;
+      --text: #e8e6e3;
+      --text-muted: #9a9895;
+      --accent: #f7931a;
+      --accent-dim: #e68a19;
+      --green: #22c55e;
+      --blue: #3b82f6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(247, 147, 26, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, transparent 0%, var(--bg) 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
+      border-radius: 14px;
+      margin-bottom: 1rem;
+      font-size: 1.75rem;
+    }
+
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 200px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      max-width: 560px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      background: var(--surface-hover);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .card-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: contain;
+      background: #fff;
+      padding: 6px;
+    }
+
+    .card-logo.dark-bg {
+      background: var(--bg);
+    }
+
+    .card-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .card-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    .card-link::after {
+      content: '→';
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo-badge">⚡</div>
+      <h1>Bitcoin Lightning Network Wallets</h1>
+      <p class="subtitle">Recommendations by type — self custody, neobanks, and exchanges</p>
+    </header>
+
+    <section class="section">
+      <h2 class="section-title">Self Custody</h2>
+      <p class="section-desc">A self-custody wallet has no imposed limits; you are responsible for your own backups. You hold the keys.</p>
+      <div class="cards">
+        <a href="https://zeusln.com/" target="_blank" rel="noopener" class="card">
+          <div class="card-header">
+            <img class="card-logo" src="https://logo.clearbit.com/zeusln.com" alt="Zeus" onerror="this.src='https://www.google.com/s2/favicons?domain=zeusln.com&sz=128';this.onerror=null;">
+            <span class="card-name">Zeus</span>
+          </div>
+          <p class="card-link">zeusln.com</p>
+        </a>
+        <a href="https://phoenix.acinq.co/" target="_blank" rel="noopener" class="card">
+          <div class="card-header">
+            <img class="card-logo" src="https://logo.clearbit.com/acinq.co" alt="Phoenix" onerror="this.src='https://www.google.com/s2/favicons?domain=phoenix.acinq.co&sz=128';this.onerror=null;">
+            <span class="card-name">Phoenix</span>
+          </div>
+          <p class="card-link">phoenix.acinq.co</p>
+        </a>
+        <a href="https://breez.technology/" target="_blank" rel="noopener" class="card">
+          <div class="card-header">
+            <img class="card-logo" src="https://logo.clearbit.com/breez.technology" alt="Breez" onerror="this.src='https://www.google.com/s2/favicons?domain=breez.technology&sz=128';this.onerror=null;">
+            <span class="card-name">Breez</span>
+          </div>
+          <p class="card-link">breez.technology</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Neobank</h2>
+      <p class="section-desc">A neobank is a mobile app that includes Bitcoin and the Lightning Network along with banking services.</p>
+      <div class="cards">
+        <a href="https://cash.app/" target="_blank" rel="noopener" class="card">
+          <div class="card-header">
+            <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Square_Cash_app_logo.svg/512px-Square_Cash_app_logo.svg.png" alt="Cash App">
+            <span class="card-name">Cash App</span>
+          </div>
+          <p class="card-link">cash.app</p>
+        </a>
+        <a href="https://strike.me" target="_blank" rel="noopener" class="card">
+          <div class="card-header">
+            <img class="card-logo" src="https://logo.clearbit.com/strike.me" alt="Strike" onerror="this.src='https://www.google.com/s2/favicons?domain=strike.me&sz=128';this.onerror=null;">
+            <span class="card-name">Strike</span>
+          </div>
+          <p class="card-link">strike.me</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Exchanges</h2>
+      <p class="section-desc">An exchange lets you swap and buy/sell various cryptocurrencies in addition to Bitcoin and the Lightning Network.</p>
+      <div class="cards">
+        <a href="https://www.kraken.com/" target="_blank" rel="noopener" class="card">
+          <div class="card-header">
+            <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/en/d/d0/Kraken_bitcoin_exchange_logo.png" alt="Kraken">
+            <span class="card-name">Kraken</span>
+          </div>
+          <p class="card-link">kraken.com</p>
+        </a>
+        <a href="https://coinbase.com" target="_blank" rel="noopener" class="card">
+          <div class="card-header">
+            <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Coinbase.svg" alt="Coinbase">
+            <span class="card-name">Coinbase</span>
+          </div>
+          <p class="card-link">coinbase.com</p>
+        </a>
+        <a href="https://river.com" target="_blank" rel="noopener" class="card">
+          <div class="card-header">
+            <img class="card-logo" src="https://logo.clearbit.com/river.com" alt="River" onerror="this.src='https://www.google.com/s2/favicons?domain=river.com&sz=128';this.onerror=null;">
+            <span class="card-name">River</span>
+          </div>
+          <p class="card-link">river.com</p>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      Informational guide — always verify links and terms before use. Not financial advice.
+    </footer>
+  </div>
+</body>
+</html>
