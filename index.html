@@ -6,146 +6,231 @@
   <title>Bitcoin Lightning Network Wallets — Recommendations</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0d0d0f;
-      --surface: #16161a;
-      --surface-hover: #1c1c22;
-      --border: #2a2a30;
-      --text: #e8e6e3;
-      --text-muted: #9a9895;
-      --accent: #f7931a;
-      --accent-dim: #e68a19;
-      --green: #22c55e;
-      --blue: #3b82f6;
+      --bg: #0a0a0b;
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-hover: rgba(255, 255, 255, 0.07);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f5f5f5;
+      --text-secondary: #b0b0b0;
+      --orange: #f7931a;
+      --orange-glow: rgba(247, 147, 26, 0.15);
+      --green: #34d399;
+      --green-glow: rgba(52, 211, 153, 0.12);
+      --cyan: #22d3ee;
+      --cyan-glow: rgba(34, 211, 238, 0.12);
+      --purple: #a78bfa;
+      --purple-glow: rgba(167, 139, 250, 0.12);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      line-height: 1.5;
-      position: relative;
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    body::before {
-      content: '';
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-glow {
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(247, 147, 26, 0.08) 0%, transparent 50%),
-        linear-gradient(180deg, transparent 0%, var(--bg) 40%);
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(247, 147, 26, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 20% 60%, rgba(52, 211, 153, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 80% 80%, rgba(167, 139, 250, 0.05) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
     }
 
     .page {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 3rem 2rem 4rem;
+      padding: 3.5rem 2rem 3rem;
       position: relative;
       z-index: 1;
     }
 
+    /* ── Header ── */
     header {
       text-align: center;
-      margin-bottom: 3rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
+      margin-bottom: 3.5rem;
     }
 
-    .logo-badge {
+    .badge {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
-      border-radius: 14px;
-      margin-bottom: 1rem;
-      font-size: 1.75rem;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem 0.4rem 0.65rem;
+      background: var(--orange-glow);
+      border: 1px solid rgba(247, 147, 26, 0.25);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.01em;
+    }
+
+    .badge span {
+      font-size: 1.1rem;
+      line-height: 1;
     }
 
     h1 {
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 50%, var(--orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .subtitle {
-      color: var(--text-muted);
-      font-size: 1rem;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
       font-weight: 400;
+      max-width: 480px;
+      margin: 0 auto;
     }
 
+    .divider {
+      width: 60px;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--orange);
+      margin: 2rem auto 0;
+    }
+
+    /* ── Sections ── */
     .section {
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .section--custody .section-icon {
+      background: var(--green-glow);
+      border: 1px solid rgba(52, 211, 153, 0.2);
+    }
+    .section--neobank .section-icon {
+      background: var(--cyan-glow);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+    .section--exchange .section-icon {
+      background: var(--purple-glow);
+      border: 1px solid rgba(167, 139, 250, 0.2);
     }
 
     .section-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      max-width: 200px;
-    }
+    .section--custody .section-title { color: var(--green); }
+    .section--neobank .section-title { color: var(--cyan); }
+    .section--exchange .section-title { color: var(--purple); }
 
     .section-desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
       margin-bottom: 1.25rem;
+      margin-left: calc(36px + 0.75rem);
       max-width: 560px;
     }
 
+    /* ── Cards ── */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 0.875rem;
     }
 
     .card {
       background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 1.25rem 1.5rem;
-      transition: border-color 0.2s, background 0.2s;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .card:hover {
-      border-color: var(--accent);
-      background: var(--surface-hover);
-    }
-
-    .card-header {
       display: flex;
       align-items: center;
       gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, border-color 0.25s, box-shadow 0.25s, background 0.25s;
+      position: relative;
+      overflow: hidden;
     }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .section--custody .card::before { background: linear-gradient(135deg, var(--green-glow), transparent 60%); }
+    .section--neobank .card::before { background: linear-gradient(135deg, var(--cyan-glow), transparent 60%); }
+    .section--exchange .card::before { background: linear-gradient(135deg, var(--purple-glow), transparent 60%); }
+
+    .card:hover {
+      transform: translateY(-2px);
+      background: var(--surface-hover);
+    }
+
+    .section--custody .card:hover {
+      border-color: rgba(52, 211, 153, 0.3);
+      box-shadow: 0 8px 30px rgba(52, 211, 153, 0.08);
+    }
+    .section--neobank .card:hover {
+      border-color: rgba(34, 211, 238, 0.3);
+      box-shadow: 0 8px 30px rgba(34, 211, 238, 0.08);
+    }
+    .section--exchange .card:hover {
+      border-color: rgba(167, 139, 250, 0.3);
+      box-shadow: 0 8px 30px rgba(167, 139, 250, 0.08);
+    }
+
+    .card:hover::before { opacity: 1; }
 
     .card-logo {
       width: 48px;
@@ -154,127 +239,173 @@
       object-fit: contain;
       background: #fff;
       padding: 6px;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
     }
 
-    .card-logo.dark-bg {
-      background: var(--bg);
+    .card-body {
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
     }
 
     .card-name {
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.1rem;
     }
 
-    .card-link {
+    .card-url {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--accent);
-      text-decoration: none;
-      margin-top: auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      display: block;
     }
 
-    .card-link:hover {
-      text-decoration: underline;
+    .card-arrow {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      transition: transform 0.2s, color 0.2s;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
     }
 
-    .card-link::after {
-      content: '→';
+    .card:hover .card-arrow {
+      transform: translateX(3px);
     }
 
+    .section--custody .card:hover .card-arrow { color: var(--green); }
+    .section--neobank .card:hover .card-arrow { color: var(--cyan); }
+    .section--exchange .card:hover .card-arrow { color: var(--purple); }
+
+    /* ── Footer ── */
     footer {
       text-align: center;
-      margin-top: 3rem;
+      margin-top: 2rem;
       padding-top: 2rem;
       border-top: 1px solid var(--border);
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .page { padding: 2rem 1.25rem 2rem; }
+      .cards { grid-template-columns: 1fr; }
+      .section-desc { margin-left: 0; }
     }
   </style>
 </head>
 <body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
   <div class="page">
     <header>
-      <div class="logo-badge">⚡</div>
-      <h1>Bitcoin Lightning Network Wallets</h1>
-      <p class="subtitle">Recommendations by type — self custody, neobanks, and exchanges</p>
+      <div class="badge"><span>⚡</span> Lightning Network</div>
+      <h1>Bitcoin Wallet<br>Recommendations</h1>
+      <p class="subtitle">The best ways to send, receive, and hold Bitcoin over the Lightning Network — organized by type.</p>
+      <div class="divider"></div>
     </header>
 
-    <section class="section">
-      <h2 class="section-title">Self Custody</h2>
-      <p class="section-desc">A self-custody wallet has no imposed limits; you are responsible for your own backups. You hold the keys.</p>
+    <!-- Self Custody -->
+    <section class="section section--custody">
+      <div class="section-header">
+        <div class="section-icon">🔑</div>
+        <h2 class="section-title">Self Custody</h2>
+      </div>
+      <p class="section-desc">No imposed limits. You hold the keys and are responsible for your own backups — full sovereignty over your funds.</p>
       <div class="cards">
         <a href="https://zeusln.com/" target="_blank" rel="noopener" class="card">
-          <div class="card-header">
-            <img class="card-logo" src="https://logo.clearbit.com/zeusln.com" alt="Zeus" onerror="this.src='https://www.google.com/s2/favicons?domain=zeusln.com&sz=128';this.onerror=null;">
+          <img class="card-logo" src="https://logo.clearbit.com/zeusln.com" alt="Zeus" onerror="this.src='https://www.google.com/s2/favicons?domain=zeusln.com&sz=128';this.onerror=null;">
+          <div class="card-body">
             <span class="card-name">Zeus</span>
+            <span class="card-url">zeusln.com</span>
           </div>
-          <p class="card-link">zeusln.com</p>
+          <span class="card-arrow">→</span>
         </a>
         <a href="https://phoenix.acinq.co/" target="_blank" rel="noopener" class="card">
-          <div class="card-header">
-            <img class="card-logo" src="https://logo.clearbit.com/acinq.co" alt="Phoenix" onerror="this.src='https://www.google.com/s2/favicons?domain=phoenix.acinq.co&sz=128';this.onerror=null;">
+          <img class="card-logo" src="https://logo.clearbit.com/acinq.co" alt="Phoenix" onerror="this.src='https://www.google.com/s2/favicons?domain=phoenix.acinq.co&sz=128';this.onerror=null;">
+          <div class="card-body">
             <span class="card-name">Phoenix</span>
+            <span class="card-url">phoenix.acinq.co</span>
           </div>
-          <p class="card-link">phoenix.acinq.co</p>
+          <span class="card-arrow">→</span>
         </a>
         <a href="https://breez.technology/" target="_blank" rel="noopener" class="card">
-          <div class="card-header">
-            <img class="card-logo" src="https://logo.clearbit.com/breez.technology" alt="Breez" onerror="this.src='https://www.google.com/s2/favicons?domain=breez.technology&sz=128';this.onerror=null;">
+          <img class="card-logo" src="https://logo.clearbit.com/breez.technology" alt="Breez" onerror="this.src='https://www.google.com/s2/favicons?domain=breez.technology&sz=128';this.onerror=null;">
+          <div class="card-body">
             <span class="card-name">Breez</span>
+            <span class="card-url">breez.technology</span>
           </div>
-          <p class="card-link">breez.technology</p>
+          <span class="card-arrow">→</span>
         </a>
       </div>
     </section>
 
-    <section class="section">
-      <h2 class="section-title">Neobank</h2>
-      <p class="section-desc">A neobank is a mobile app that includes Bitcoin and the Lightning Network along with banking services.</p>
+    <!-- Neobank -->
+    <section class="section section--neobank">
+      <div class="section-header">
+        <div class="section-icon">🏦</div>
+        <h2 class="section-title">Neobank</h2>
+      </div>
+      <p class="section-desc">Mobile apps that combine Bitcoin and Lightning Network with everyday banking services.</p>
       <div class="cards">
         <a href="https://cash.app/" target="_blank" rel="noopener" class="card">
-          <div class="card-header">
-            <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Square_Cash_app_logo.svg/512px-Square_Cash_app_logo.svg.png" alt="Cash App">
+          <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Square_Cash_app_logo.svg/512px-Square_Cash_app_logo.svg.png" alt="Cash App">
+          <div class="card-body">
             <span class="card-name">Cash App</span>
+            <span class="card-url">cash.app</span>
           </div>
-          <p class="card-link">cash.app</p>
+          <span class="card-arrow">→</span>
         </a>
         <a href="https://strike.me" target="_blank" rel="noopener" class="card">
-          <div class="card-header">
-            <img class="card-logo" src="https://logo.clearbit.com/strike.me" alt="Strike" onerror="this.src='https://www.google.com/s2/favicons?domain=strike.me&sz=128';this.onerror=null;">
+          <img class="card-logo" src="https://logo.clearbit.com/strike.me" alt="Strike" onerror="this.src='https://www.google.com/s2/favicons?domain=strike.me&sz=128';this.onerror=null;">
+          <div class="card-body">
             <span class="card-name">Strike</span>
+            <span class="card-url">strike.me</span>
           </div>
-          <p class="card-link">strike.me</p>
+          <span class="card-arrow">→</span>
         </a>
       </div>
     </section>
 
-    <section class="section">
-      <h2 class="section-title">Exchanges</h2>
-      <p class="section-desc">An exchange lets you swap and buy/sell various cryptocurrencies in addition to Bitcoin and the Lightning Network.</p>
+    <!-- Exchanges -->
+    <section class="section section--exchange">
+      <div class="section-header">
+        <div class="section-icon">🔄</div>
+        <h2 class="section-title">Exchanges</h2>
+      </div>
+      <p class="section-desc">Services that let you buy, sell, and swap various cryptocurrencies including Bitcoin over the Lightning Network.</p>
       <div class="cards">
         <a href="https://www.kraken.com/" target="_blank" rel="noopener" class="card">
-          <div class="card-header">
-            <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/en/d/d0/Kraken_bitcoin_exchange_logo.png" alt="Kraken">
+          <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/en/d/d0/Kraken_bitcoin_exchange_logo.png" alt="Kraken">
+          <div class="card-body">
             <span class="card-name">Kraken</span>
+            <span class="card-url">kraken.com</span>
           </div>
-          <p class="card-link">kraken.com</p>
+          <span class="card-arrow">→</span>
         </a>
         <a href="https://coinbase.com" target="_blank" rel="noopener" class="card">
-          <div class="card-header">
-            <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Coinbase.svg" alt="Coinbase">
+          <img class="card-logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Coinbase.svg" alt="Coinbase">
+          <div class="card-body">
             <span class="card-name">Coinbase</span>
+            <span class="card-url">coinbase.com</span>
           </div>
-          <p class="card-link">coinbase.com</p>
+          <span class="card-arrow">→</span>
         </a>
         <a href="https://river.com" target="_blank" rel="noopener" class="card">
-          <div class="card-header">
-            <img class="card-logo" src="https://logo.clearbit.com/river.com" alt="River" onerror="this.src='https://www.google.com/s2/favicons?domain=river.com&sz=128';this.onerror=null;">
+          <img class="card-logo" src="https://logo.clearbit.com/river.com" alt="River" onerror="this.src='https://www.google.com/s2/favicons?domain=river.com&sz=128';this.onerror=null;">
+          <div class="card-body">
             <span class="card-name">River</span>
+            <span class="card-url">river.com</span>
           </div>
-          <p class="card-link">river.com</p>
+          <span class="card-arrow">→</span>
         </a>
       </div>
     </section>
